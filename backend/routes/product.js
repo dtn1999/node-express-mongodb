@@ -1,77 +1,32 @@
 /* eslint-disable import/extensions */
 import express from 'express';
-import Product from '../models/product.js';
+import productController from '../controllers/product.js';
 
 const router = express.Router();
 
 /**
  * get all products
  */
-router.get('/', (req, res) => {
-  Product.find()
-    .then((products) => {
-      res.status(200).json({ products });
-    })
-    .catch((error) => {
-      res.status(400).json({ error });
-    });
-});
+router.get('/', productController.getAllProducts);
 
 /**
  * get  a product using his id
  */
-router.get('/:id', (req, res) => {
-  Product.findOne({ _id: req.params.id })
-    .then((product) => {
-      res.status(200).json({ product });
-    })
-    .catch((error) => {
-      res.status(400).json({ error });
-    });
-});
+router.get('/:id', productController.getProductById);
 
 /**
  * create  a new product
  */
-router.post('/', (req, res) => {
-  const newProduct = new Product({
-    ...req.body,
-  });
-  newProduct.save()
-    .then((savedProduct) => {
-      res.status(200).json({ product: savedProduct });
-    })
-    .catch((error) => {
-      res.status(400).json({ error });
-    });
-});
+router.post('/', productController.createProduct);
 
 /**
  * update an existing product based on his id
  */
-router.put('/:id', (req, res) => {
-  Product.updateOne({ _id: req.params.id }, {
-    ...res.body, _id: req.params.id,
-  })
-    .then(() => {
-      res.status(203).json({ message: 'Modified!' });
-    })
-    .catch((error) => {
-      res.status(400).json({ error });
-    });
-});
+router.put('/:id', productController.updateProduct);
 
 /**
  * delete an existing product based on his id
  */
-router.delete('/:id', (req, res) => {
-  Product.deleteOne({ _id: req.params.id })
-    .then(() => {
-      res.status(200).json({ message: 'Deleted!' });
-    })
-    .catch((error) => {
-      res.status(400).json({ error });
-    });
-});
+router.delete('/:id', productController.deleteProduct);
 
 export default router;

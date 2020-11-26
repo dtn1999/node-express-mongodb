@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import Product from '../models/product.js';
 
 export default {
@@ -33,10 +34,14 @@ export default {
   },
   updateProduct: (req, res) => {
     Product.updateOne({ _id: req.params.id }, {
-      ...res.body, _id: req.params.id,
+      _id: req.params.id,
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      inStock: req.body.inStock,
     })
       .then(() => {
-        res.status(203).json({ message: 'Modified!' });
+        res.status(203).json({ message: 'Modified !' });
       })
       .catch((error) => {
         res.status(400).json({ error });
@@ -45,7 +50,7 @@ export default {
   deleteProduct: (req, res) => {
     Product.deleteOne({ _id: req.params.id })
       .then(() => {
-        res.status(200).json({ message: 'Deleted!' });
+        res.status(200).json({ message: 'Deleted !' });
       })
       .catch((error) => {
         res.status(400).json({ error });
