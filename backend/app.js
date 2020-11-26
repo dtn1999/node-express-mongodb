@@ -1,5 +1,17 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-underscore-dangle */
 import express from 'express';
 import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import Product from './models/product.js';
+
+mongoose.connect('mongodb+srv://danyls:danyls@cluster0.qlso7.mongodb.net/test?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
 
@@ -23,29 +35,22 @@ app.use(bodyParser.json());
  * get route
  */
 
-app.get('/api/products', (req, res) => {
-  const products = [
-    {
-      _id: 'oeihfzeoi',
-      title: 'Mon premier objet',
-      description: 'Les infos de mon premier objet',
-      imageUrl: 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg',
-      price: 4900,
-      userId: 'qsomihvqios',
-    },
-    {
-      _id: 'oeihfzeomoihi',
-      title: 'Mon deuxième objet',
-      description: 'Les infos de mon deuxième objet',
-      imageUrl: 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg',
-      price: 2900,
-      userId: 'qsomihvqios',
-    },
-  ];
-  res.status(200).json(products);
+app.use('/api/products', (req, res) => {
+  Product.find()
+    .then((things) => res.status(200).json(things))
+    .catch((error) => res.status(400).json({ error }));
 });
 
 /**
  * handle post request on route /api/product
  */
+app.post('/api/product', (req, res) => {
+  delete req.body._id;
+  const thing = new Product({
+    ...req.body,
+  });
+  thing.save()
+    .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
+    .catch((error) => res.status(400).json({ error }));
+});
 export default app;
