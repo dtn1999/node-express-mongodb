@@ -1,0 +1,9 @@
+{
+  "name": "node-express-postgresql",
+  "version": "1.0.0",
+  "description": "\"Small backend application to demonstrate how to use nodejs , express and postgresql to build a small server that implement authentication and authorization and also CRUD Operations\"",
+  "main": "index.js",
+  "repository": "git@github.com:dtn1999/node-express-postgresql.git",
+  "author": "Danyls Ngongang",
+  "license": "MIT"
+}

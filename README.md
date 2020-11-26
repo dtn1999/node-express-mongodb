@@ -1,8 +1,8 @@
-![html5 and css3 image](node-express-mongodb.jpg)
+![html5 and css3 image](node-express-postgre.png)
 
 # BACKEND WITH NODE EXPRESS AND MONGODB
 
-This codebase was created to demontrate an example of a backend service implemented using nodeJs , express and mongoDB
+Small backend application to demonstrate how to use nodejs , express and postgresql to build a small server that implement authentication and authorization and also CRUD Operations.
 
 ## Getting started
 
@@ -23,3 +23,6 @@ This codebase was created to demontrate an example of a backend service implemen
 ## Docs
 
 ## Todo
+
+[] add auth2
+[] add jwtoken for authorisation and authentication
