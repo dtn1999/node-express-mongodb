@@ -52,8 +52,8 @@ mongoose
 
 ## Todo
 
-[x] jwt authentication
-[]  fix bug with .env 
-[]  implement tests
-[]  implement frontend (in react and react native :heart_eyes:)
-[]  inplement the graphql version of the server
+- [x] jwt authentication
+- [ ] fix bug with .env 
+- [ ] implement tests
+- [ ] implement frontend (in react and react native :heart_eyes:)
+- [ ] inplement the graphql version of the server
