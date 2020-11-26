@@ -3,6 +3,7 @@
 /* eslint-disable import/extensions */
 import bcrypt from 'bcrypt';
 import User from '../models/User.js';
+import jwt from 'jsonwebtoken'
 
 export default {
   signUp: (req, res) => {
@@ -13,7 +14,10 @@ export default {
           password: hash,
         });
         newUser.save()
-          .then(() => res.status(201).json({ userId: newUser._id, token: 'TOKEN' }))
+          .then(() => res.status(201).json({ userId: newUser._id, token:  jwt.sign(
+            { userId: user._id },
+            'RANDOM_TOKEN_SECRET',
+            { expiresIn: '24h' } }))
           .catch((error) => res.status(400).json({ error }));
       })
       .catch((error) => res.status(500).json({ error }));
@@ -30,7 +34,10 @@ export default {
           }
           res.status(200).json({
             userId: user._id,
-            token: 'TOKEN',
+            token:  jwt.sign(
+                { userId: user._id },
+                'RANDOM_TOKEN_SECRET',
+                { expiresIn: '24h' },
           });
         })
         .catch((error) => res.status(500).json({ error }));
