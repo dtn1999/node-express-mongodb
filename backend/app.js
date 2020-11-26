@@ -5,6 +5,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import productsRouter from './routes/product.js';
+import usersRouter from './routes/user.js';
 
 mongoose.connect('mongodb+srv://danyls:danyls@cluster0.qlso7.mongodb.net/test?retryWrites=true&w=majority',
   {
@@ -31,9 +32,15 @@ app.use((req, res, next) => {
  */
 
 app.use(bodyParser.json());
+
 /**
- * set the routings
+* set the products routing
  */
 app.use('/api/products', productsRouter);
+
+/**
+ * set user routing
+ */
+app.use('/api/users', usersRouter);
 
 export default app;
