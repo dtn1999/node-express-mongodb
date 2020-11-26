@@ -1,10 +1,7 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable import/extensions */
 import http from 'http';
-import dotenv from 'dotenv';
 import expressApp from './app.js';
-
-dotenv.config();
 
 console.log(process.env.MONGODB_USERNAME);
 const port = process.env.PORT || 8000;

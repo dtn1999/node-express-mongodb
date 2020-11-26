@@ -9,7 +9,13 @@ Small backend application to demonstrate how to use nodejs , express and postgre
 ```
 # hier are the steps to run the code on your desktop
 
+$ git clone https://github.com/dtn1999/node-express-mongodb.git
 
+$ cd node-exporess.mongodb
+
+$ npm install
+
+$ npm run:dev
 ```
 
 ## Code Overview
@@ -17,12 +23,36 @@ Small backend application to demonstrate how to use nodejs , express and postgre
 ### Folder structure
 
 ```
+root
+   | frontend
+   | backend 
+           | controllers
+                       | product.js
+                       | user.js
+           | middlewares
+                       | auth.js
+                       | multer-config.js
+           | models
+                  | Product.js
+                  | User.js
+           | routes 
+                  | product.js
+                  | user.js
+    app.js
+    server.js
 
+             
 ```
 
 ## Docs
 
+jwt,
+bcrypt,
+mongoose
+
 ## Todo
 
-[] add auth2
-[] add jwtoken for authorisation and authentication
+[x] jwt authentication
+[]  fix bug with .env 
+[]  implement frontend (in react and react native :heart_eyes:)
+[]  inplement the graphql version of the server

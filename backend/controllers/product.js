@@ -23,6 +23,7 @@ export default {
   createProduct: (req, res) => {
     const newProduct = new Product({
       ...req.body,
+      // imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
     });
     newProduct.save()
       .then((savedProduct) => {
@@ -39,6 +40,7 @@ export default {
       description: req.body.description,
       price: req.body.price,
       inStock: req.body.inStock,
+      // imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     })
       .then(() => {
         res.status(203).json({ message: 'Modified !' });

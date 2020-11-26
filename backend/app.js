@@ -4,9 +4,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import productsRouter from './routes/product.js';
 import usersRouter from './routes/user.js';
 
+dotenv.config();
+
+// console.log(process.env.MONGODB_USERNAME);
 mongoose.connect('mongodb+srv://danyls:danyls@cluster0.qlso7.mongodb.net/test?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
