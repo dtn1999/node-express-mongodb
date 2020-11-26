@@ -2,8 +2,22 @@
   "name": "node-express-postgresql",
   "version": "1.0.0",
   "description": "\"Small backend application to demonstrate how to use nodejs , express and postgresql to build a small server that implement authentication and authorization and also CRUD Operations\"",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "git@github.com:dtn1999/node-express-postgresql.git",
+  "type": "module",
+  "scripts": {
+    "start:dev": "nodemon server"
+  },
   "author": "Danyls Ngongang",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.6"
+  }
 }
